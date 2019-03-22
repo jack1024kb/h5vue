@@ -32,3 +32,4 @@ spack pro -c
 6. 可以用动态import 语法。
 7. 不可以用 async ,for(var a of as)这两个语法。因为用的是buble来转码
 8. 所有图片都放到 image目录。image里可以有子目录。所有字体都放到　font 目录，可以有子目录。
+9. node模块如果用到前端代码中，node模块导出的只有default，只能这样引用 import spritevue from 'sprite-vue',不能这样引用 import {Vue} from 'sprite-vue'
