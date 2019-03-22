@@ -34,3 +34,4 @@ spack pro -c
 7. 不可以用 async ,for(var a of as)这两个语法。因为用的是buble来转码
 8. 所有图片都放到 image目录。image里可以有子目录。所有字体都放到　font 目录，可以有子目录。
 9. node模块如果用到前端代码中，node模块导出的只有default，只能这样引用 import spritevue from 'sprite-vue',不能这样引用 import {Vue} from 'sprite-vue'
+10. 支持rem .这次出图会按 750px宽来出，在750宽下 1rem=100px,所以，如果标注是 16px ,就直接可以写 0.16rem
