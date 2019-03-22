@@ -24,7 +24,6 @@ spack dev -c
 spack pro -c
 ```
 ## 用spack项目编译的项目有一些规定
-
 1. 所有代码在一个目录中，src为源代码目录。dev执行 spack dev 自动生成的目录，dist是执行spack pro自动生成的目录，node是spack 读node 模块用到的目录。
 2. .spack是系统目录。配置文件放在这里（这个不用管，如果有需要我来修改）
 3. 都用绝对路径。这个不是spack要求，而是客户端拉到代码后需要替换为本地路径，为了方便替换，我们都用"/" 开头的绝对路径。
@@ -32,3 +31,4 @@ spack pro -c
 5.如果用到node模块，我来加。
 6. 可以用动态import 语法。
 7. 不可以用 async ,for(var a of as)这两个语法。因为用的是buble来转码
+8. 所有图片都放到 image目录。image里可以有子目录。所有字体都放到　font 目录，可以有子目录。
