@@ -16,6 +16,7 @@ cd h5vue
 qnpm install
 #开发的时候，执行命令，页面不会自动刷新，看效果，需要手动刷新页面（自动刷新原来有，后来因为习惯手动刷新，就把自动刷新给去掉了）,会自动起一个server，端口3000
 spack dev
+# 执行spack dev 后可以访问 youhost:3000/demo.html 查看demo页。 youhost:3000/animate.html  也是一个示例页
 #发布的时候，执行命令。不会启动server
 spack pro
 
