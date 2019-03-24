@@ -16,9 +16,11 @@ cd h5vue
 qnpm install
 #开发的时候，执行命令，页面不会自动刷新，看效果，需要手动刷新页面（自动刷新原来有，后来因为习惯手动刷新，就把自动刷新给去掉了）,会自动起一个server，端口3000
 spack dev
-# 执行spack dev 后可以访问 youhost:3000/demo.html 查看demo页。 youhost:3000/animate.html  也是一个示例页
+# 执行spack dev 后可以访问 youhost:3000
 #发布的时候，执行命令。不会启动server
 spack pro
+#发布后如果也想启动server
+spack pro -s
 
 #默认执行这两个命令是有缓存的。如果要全新编译 -c是 clean 的意思，一般不需要全新编译，除非发现页面有问题，可以尝试全新编译排除下
 spack dev -c
@@ -32,6 +34,5 @@ spack pro -c
 5.如果用到node模块，我来加。
 6. 可以用动态import 语法。
 7. 不可以用 async ,for(var a of as)这两个语法。因为用的是buble来转码
-8. 所有图片都放到 image目录。image里可以有子目录。所有字体都放到　font 目录，可以有子目录。
-9. node模块如果用到前端代码中，node模块导出的只有default，只能这样引用 import spritevue from 'sprite-vue',不能这样引用 import {Vue} from 'sprite-vue'
-10. 支持rem .这次出图会按 750px宽来出，在750宽下 1rem=100px,所以，如果标注是 16px ,就直接可以写 0.16rem
+8. 所有图片,字体，音视频等资源都放到 image目录。image里可以有子目录。
+9. 支持rem .这次出图会按 750px宽来出，在750宽下 1rem=100px,所以，如果标注是 16px ,就直接可以写 0.16rem
