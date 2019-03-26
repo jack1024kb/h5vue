@@ -37,8 +37,9 @@ spack pro -c
 8. 所有图片,字体，音视频等资源都放到 image目录。image里可以有子目录。
 9. 支持rem .这次出图会按 750px宽来出，在750宽下 1rem=100px,所以，如果标注是 16px ,就直接可以写 0.16rem
 10. 从开发目录发布页面到产品路径。会去掉 /pages,文件夹和文件同名，会合并。
-   /pages/index/index.html        => /index.html
-   /pages/withdarw/widthdraw.html =>/withdraw.html
-   /pages/video/tv.html           =>/video/tv.html
-   /pages/video/movie.html        =>/video/movie.html
+
+   - /pages/index/index.html        => /index.html
+   - /pages/withdarw/widthdraw.html =>/withdraw.html
+   - /pages/video/tv.html           =>/video/tv.html
+   - /pages/video/movie.html        =>/video/movie.html
  
