@@ -34,12 +34,13 @@ spack pro -c
 5.如果用到node模块，我来加。
 6. 可以用动态import 语法。
 7. 不可以用 async ,for(var a of as)这两个语法。因为用的是buble来转码
-8. 所有图片,字体，音视频等资源都放到 image目录。image里可以有子目录。
+8. 所有图片,字体，音视频等资源都放到 image目录，image目录有两种，一种是项目共用 的 /image 用绝对路径引用 一种是页面用的 ./image 用相对路径引用
 9. 支持rem .这次出图会按 750px宽来出，在750宽下 1rem=100px,所以，如果标注是 16px ,就直接可以写 0.16rem
-10. 从开发目录发布页面到产品路径。会去掉 /pages,文件夹和文件同名，会合并。
+10. 从开发目录发布页面到产品路径。会去掉 /pages,文件夹和文件同名，会合并，但开发环境，不会修改发布路径，在原文件中是什么路径，发布就是什么路径。发布规则就是一个函数，是可以自定义的。
 
    - /pages/index/index.html        => /index.html
    - /pages/withdarw/widthdraw.html =>/withdraw.html
    - /pages/video/tv.html           =>/video/tv.html
    - /pages/video/movie.html        =>/video/movie.html
- 
+   
+   
