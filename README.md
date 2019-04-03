@@ -44,4 +44,5 @@ spack pro -c
    - /pages/withdarw/widthdraw.html =>/withdraw.html
    - /pages/video/tv.html           =>/video/tv.html
    - /pages/video/movie.html        =>/video/movie.html
+   
   跳目录有一个副作用，就是最好不要在html中直接引用资源。比如用<img src='xxx> 引用本地图片，在 html的style中引用资源 一般情况下是没有这个问题的。因为装饰性的图片都可以用背景。正式的图片都是数据。所以暂时没有对这个问题进行处理，遇到先避免一下就好。
