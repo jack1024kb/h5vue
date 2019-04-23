@@ -4,7 +4,7 @@
 ```shell
 git clone dhw@139.129.27.90:/home/dhw/git-base/spack.git
 cd spack
-npm install
+qnpm install
 sudo npm link
 ```
 这样在全局就有了spack　命令
