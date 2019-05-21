@@ -1,27 +1,28 @@
-# h5vue
+# spack 编译
 
 ## 环境准备 
 ```shell
 git clone dhw@139.129.27.90:/home/dhw/git-base/spack.git
 cd spack
-qnpm install
+npm install
 sudo npm link
 ```
 这样在全局就有了spack　命令
 
 ## 拉项目代码
 ```shell
-git clone dhw@139.129.27.90:/home/dhw/git-base/template/h5vue
-cd h5vue
-qnpm install
-#开发的时候，执行命令，页面不会自动刷新，看效果，需要手动刷新页面（自动刷新原来有，后来因为习惯手动刷新，就把自动刷新给去掉了）,会自动起一个server，端口3000
+#开始做的时候我会建一个项目,先用xxx代替
+git clone dhw@139.129.27.90:/home/dhw/git-base/template/xxx game
+cd game
+npm install
+#开发的时候，执行命令，页面不会自动刷新，看效果，需要手动刷新页面,会自动起一个server，端口3000
 spack dev
-# 执行spack dev 后可以访问 yourhost:3000
+# 执行spack dev 后可以访问 your host:3000
 #发布的时候，执行命令。不会启动server
 spack pro
 #发布后如果也想启动server
 spack pro -s
-#默认是发布到 线上web环境，如果要发布到app环境，用 
+#默认是发布到线上 web 环境，如果要发布到 app 环境，用 
 spack pro -f '.spack-app'
 
 #默认执行这两个命令是有缓存的。如果要全新编译 -c是 clean 的意思，一般不需要全新编译，除非发现页面有问题，可以尝试全新编译排除下
@@ -30,19 +31,19 @@ spack pro -c
 ```
 ## 用spack编译的项目有一些规定
 1. 所有代码在一个目录中，src为源代码目录。dev执行 spack dev 自动生成的目录，dist是执行spack pro自动生成的目录，node是spack 读node 模块用到的目录。
-2. .spack是系统目录。配置文件放在这里（这个不用管，如果有需要我来修改）
-3. 页面路径都用绝对路径（资源用相对路径为好，因为资源发布后都会成为绝对路径）。这个不是spack要求，而是客户端拉到代码后需要替换为本地路径，为了方便替换，我们都用"/" 开头的绝对路径。如果是页面路径都写全 比如 '/index.html' 不要省略index.html,而且都以.html结尾，这也是为了方便客户端替换
-4. 代码统一用 es6模块语法，import ,export 。import 的文件如果省略后缀会自动补全为 *.js，如果以 '/'结尾 会自动补全为 "*/index.js"。不会去尝试其它文件后缀或做其它补全。可以引用css import '/css/a.css'
-5.如果用到node模块，我来加。
+2. .spack是系统目录。配置文件放在这里。
+3. html文件为编译入口文件，每个html文件对应一个同名的js文件，比如 如果有game.html，一定在同目录下有一个game.js文件，如果没有，就认为是纯html文件。
+4. 代码统一用 es6模块语法，import ,export 。import 的文件如果省略后缀会自动补全为 *.js，如果以 '/'结尾 会自动补全为 "*/index.js"。不会去尝试其它文件后缀或做其它补全。可以引用css import '/css/a.css'，不可以用import引用图片，字体等资源。
+5.如果用到node模块，需要在配置文件加 alias。
 6. 可以用动态import 语法。
 7. 不可以用 async ,for(var a of as)这两个语法。因为用的是buble来转码
-8. 所有图片,字体，音视频等资源都放到 image目录，image目录有两种，一种是项目共用 的 /image 用绝对路径引用 一种是页面用的 ./image 用相对路径引用
-9. 支持rem .这次出图会按 750px宽来出，在750宽下 1rem=100px,所以，如果标注是 16px ,就直接可以写 0.16rem
-10. 从开发目录发布页面到产品路径。会去掉 /pages,文件夹和文件同名，会合并。布规则就是一个函数，是可以自定义的。
+8. 所有图片,字体，音视频等资源都放到 image目录，image可以有子目录，也可以有多个image目录
+
+9. 从开发目录发布页面到产品路径。会去掉 /pages,文件夹和文件同名，会合并。布规则就是一个函数，是可以自定义的。
 
    - /pages/index/index.html        => /index.html
    - /pages/withdarw/widthdraw.html =>/withdraw.html
    - /pages/video/tv.html           =>/video/tv.html
    - /pages/video/movie.html        =>/video/movie.html
    
-  跳目录有一个副作用，就是最好不要在html中直接引用资源。比如用<img src='xxx> 引用本地图片，在 html的style中引用资源 一般情况下是没有这个问题的。因为装饰性的图片都可以用背景。正式的图片都是数据。所以暂时没有对这个问题进行处理，遇到先避免一下就好。
+ 跳目录有一个副作用，在html中直接引用资源，会找不到文件。比如用<img src='xxx'/> ，需要用 reslovePath 转换<img src=resolvePath('xxx') />
